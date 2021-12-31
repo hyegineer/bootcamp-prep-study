@@ -14,8 +14,8 @@
 
 ### **Programming with JavaScript Part 1**
 
-- Variables Practice
-- Boolean Practice
+- [Variables Practice](https://github.com/hyegineer/bootcamp-prep-study/blob/master/step-02/variables-practice.js)
+- [Boolean Practice](https://github.com/hyegineer/bootcamp-prep-study/blob/master/step-02/boolean-practice.js)
 - [Exercise 1. FizzBuzz](https://github.com/hyegineer/bootcamp-prep-study/blob/master/step-02/exercise-01-fizzbuzz.js)
 - [Exercise 2. Biggest Number](https://github.com/hyegineer/bootcamp-prep-study/blob/master/step-02/exercise-02-biggest-number.js)
 - [Exercise 3. Word Position](https://github.com/hyegineer/bootcamp-prep-study/blob/master/step-02/exercise-03-word-position.js)
