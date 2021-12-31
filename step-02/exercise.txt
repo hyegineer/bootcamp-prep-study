@@ -1,0 +1,8 @@
+sample 디렉토리를 생성한다. // mkdir sample
+1단계에서 만든 디렉토리 내에 index.js 파일을 생성한다. // cd sample // copy con index.js 
+2단계에서 만든 index.js 파일에 console.log('Hello, World');라는 내용을 입력한다. // console.log('Hello, world'); // ctrl+C
+1단계에서 만든 디렉토리 내에 javascript라는 디렉토리를 생성한다. // mkdir javascript
+2단계에서 만든 파일을 4단계에서 만든 디렉토리 내부로 이동시킨다. (복사 X) // cd.. // move index.js javascript
+4단계에서 만든 디렉토리를 삭제한다. // cd javascript // del index.js
+1단계에서 만든 디렉토리를 삭제한다. // cd.. // cd.. // rmdir javascript
+
