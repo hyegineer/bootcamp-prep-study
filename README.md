@@ -36,8 +36,8 @@
 
 ### Interacting with Webpages
 
-- Background Changer
-- Carousel
+- [Background Changer](https://github.com/hyegineer/bootcamp-prep-study/tree/master/step-04/background-changer)
+- [Carousel](https://github.com/hyegineer/bootcamp-prep-study/tree/master/step-04/carousel)
 
 ## STEP 05.
 
