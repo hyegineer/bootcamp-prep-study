@@ -45,7 +45,7 @@
 
 - Scope Quiz
 - Primitive and Reference Quiz
-- Javascript Koans
+- [Javascript Koans](https://github.com/hyegineer/bootcamp-prep-study/tree/master/step-05/javascript-koans)
 
 ## STEP 06
 
