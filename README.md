@@ -49,5 +49,5 @@
 
 ## STEP 06
 
-- Number Baseball
+- [Number Baseball](https://github.com/hyegineer/bootcamp-prep-study/tree/master/step-06/number-baseball)
 - Calendar
