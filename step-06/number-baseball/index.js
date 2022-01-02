@@ -1,58 +1,62 @@
-let randomNumber = '076';
+let randomNumber = ''; // 랜덤 숫자
+let life = 10; // 목숨
+const startButton = document.querySelector('#btn-start');
+const score = document.querySelector('#score');
+const lifes = document.querySelectorAll('.life-wrap img');
 
-document.querySelector('#btn-start').addEventListener('click', function(){
-  
-  // 게임 시작 버튼 클릭시 랜덤한 세자리 숫자 만들기
-  // randomNumber = '';
-
-  // for(let i = 0; i < 3; i++){
-  //   randomNumber += Math.floor(Math.random() * 10);
-  // }
-
-  // 숫자 입력칸 만들기
-  const inputNumber = prompt('숫자를 입력해주세요.');
- 
-  if(!Number(inputNumber)){ // 숫자형태로 입력해야함
-    alert('숫자를 입력해주세요');
-  }else{ // 한자리 내지 네자리 숫자는 안됌
-    if(inputNumber.length !== 3){ alert('세자리 숫자를 입력해주세요.');}
-    console.log(randomNumber.length, inputNumber.length)
+startButton.addEventListener('click', function(){
+  // 6. 게임 재시작 버튼
+  if(life === 0){
+    startButton.textContent = 'start!';
+    startButton.classList.remove('colored');
+    lifes.forEach(x => x.classList.remove('inactive'));
+    life = 10;
   }
 
-  // 스트라이크 로직
-  let strike = 0;
+  // 1. 게임 시작 버튼 클릭시 랜덤한 세자리 숫자 만들기
+  randomNumber = '';
+
+  for(let i = 0; i < 3; i++){
+    randomNumber += Math.floor(Math.random() * 10);
+  }
+
+  // 2. 숫자 입력 받기
+  const inputNumber = prompt('숫자를 입력해주세요.');
+ 
+  if(!Number(inputNumber)){
+     // 숫자형태로 입력해야함
+    alert('숫자를 입력해주세요'); 
+    return;
+  }else{ 
+    // 한자리 내지 네자리 숫자는 안됌
+    if(inputNumber.length !== 3){ alert('세자리 숫자를 입력해주세요.'); return}
+    life--;
+  }
+
+  // 3. 스트라이크 & 볼 계산
+  let strike = 0; // 스트라이크
+  let ball = 0; // 볼
 
   for(let i = 0; i < randomNumber.length; i++){
     if(randomNumber[i] === inputNumber[i]){
       strike += 1;
-    }
-  }
-
-  console.log('스트라이크는', strike, '개 입니다');
-
-  // 볼 로직
-  let ball = 0;
-
-  for(let i = 0; i < randomNumber.length; i++){
-    for(let j = 0; j < inputNumber.length; j++){
-      if(randomNumber[i] === inputNumber[j]){
-        ball += 1;
+    }else{
+      for(let j = 0; j < inputNumber.length; j++){
+        if(randomNumber[i] === inputNumber[j]){
+          ball += 1;
+        }
       }
     }
   }
 
-  console.log('볼은', ball, '개 입니다');
+  // 4. 화면에 스트라이크와 볼의 갯수를 표기
+  score.textContent = strike === 0 && ball === 0 ? 'out!' : `${strike} Strike, ${ball} Ball`;
+
+  // 5. 사용자가 10회까지 시도할 수 있도록 제한
+  lifes[life].classList.add('inactive');
+
+  if(life < 1){
+    startButton.textContent = 'restart!';
+    startButton.classList.add('colored');
+  }
 })
-
-// 각 자리 별로 비교하고, 같은 자리에 같은 숫자가 몇개 있는지 판별합니다. (스트라이크 갯수)
-// 예를 들어 
-// 352
-// 351
-// 일 때, 1번째 자리 X 두번째 자리 O 세번째 자리 O - 스트라이크 2
-
-// 각 자리 별로 비교하고, 다른 자리에 같은 숫자가 몇개 있는지 판별합니다. (볼 갯수)
-// 예를 들어
-// 352
-// 039 // 다른 자리에 같은 숫자 3 하나 - 볼 1
-// 239 // 다른 자리에 같은 숫자 2, 3 - 볼 2 
-// 111 // 다른 자리에 죄다 다른 숫자 - 볼 0
