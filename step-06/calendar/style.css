@@ -29,8 +29,36 @@ h1 {
   flex-direction: column;
   margin: 0 auto;
   background-color: rgba(255, 255, 255, 0.85);
-  padding: 10px 20px;
+  padding: 10px 20px 25px;
   border-radius: 8px;
+}
+
+.calendar-indicator{
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.calendar-indicator .btn-arrow{
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+}
+
+.calendar-indicator .btn-arrow img{
+  width: 20px;
+  vertical-align: bottom;
+}
+
+.calendar-indicator .btn-arrow-prev{
+  margin-right: auto;
+  margin-left: 0;
+}
+
+.calendar-indicator .btn-arrow-next{
+  margin-right: 0;
+  margin-left: auto;
 }
 
 .calendar-weeks{
