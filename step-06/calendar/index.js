@@ -45,12 +45,14 @@ function loadCalendar(y, m) {
   if (today.getMonth() === todayMonth) {
     changeDay = today;
     cells[first + todayDate - 1].style.color = 'red';
-    day.textContent = `${y}/${m + 1}/${today.getDate()} (${weekly[
-      today.getDay()
+
+    day.textContent = `${changeDay.getFullYear()}/${changeDay.getMonth() + 1}/${changeDay.getDate()} (${weekly[
+      changeDay.getDay()
     ].toUpperCase()})`;
   } else {
     changeDay = new Date(y, m);
-    day.textContent = `${y}/${new Date(y, m).getMonth() + 1}/1 (${weekly[
+    
+    day.textContent = `${changeDay.getFullYear()}/${changeDay.getMonth() + 1}/1 (${weekly[
       first
     ].toUpperCase()})`;
   }
