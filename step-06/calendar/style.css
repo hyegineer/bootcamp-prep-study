@@ -1,0 +1,67 @@
+body {
+  background-image: url("./images/bg.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: "Varela Round", sans-serif;
+}
+
+h1 {
+  font-family: "Pacifico", cursive;
+  text-align: center;
+  font-size: 72px;
+}
+
+.image-box{
+  width: 145px;
+  margin: 50px auto;
+}
+
+.image-box img{
+  width: 100%;
+}
+
+.calendar-wrap{
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
+.calendar-weeks{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+}
+
+.calendar-weeks li{
+  flex: 1;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-align: center;
+}
+
+.calendar-days{
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(7,1fr);
+}
+
+.calendar-days .cell{
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendar-days .cell:nth-child(7n){
+  border-right: 0;
+}
