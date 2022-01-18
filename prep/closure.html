@@ -1,21 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <script>
-        
-    for (var i = 1; i < 6; i++) {
-      debugger;
-      setTimeout(function timer() {    
-        // console.log(i);
-      }, i * 1000);
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // closure quiz #1
 
-  </script>
-</body>
+      // Q: 아래 예제를 실행한 결과는 어떻게 되며, 왜 그런 결과가 나올까요?
+      //    깊이 고민해본 후, 주석처리된 부분을 해제하고 결과를 확인해보세요.
+      //
+      for (var i = 1; i < 6; i++) {
+        setTimeout(function timer() {
+          console.log(i);
+        }, i * 1000);
+      }
+
+      /* 결과가 6이 5번 출력되는 현상 이유 적어보기
+
+        1. for문의 i가 전역변수로 취급이 됌
+          전역 실행 컨텍스트의 Lexical environment의 Environment record에
+          i라는 변수 식별자
+          setTimeout이라는 함수
+          그리고 시간으로 전달주는 i라는 매개변수 식별자 기록
+
+        2. timer 함수가 ^작성된 시점^의 i값을 찾아봄.
+          timer 함수의 Lexical environment의 Environment record에 i가 없음.
+          그럼 outer environment reference로 전역변수에 있는 Lexical environment의 i를 참고함.
+          이 때 i는 반복문을 이미 순회했으므로 6이 나오고,
+          참조할 i 값은 전역변수 6이라 6이 5번 출력됌
+      */
+    </script>
+
+    <script>
+      // closure quiz #2
+
+      // Q: 아래 예제를 실행한 결과는 어떻게 되며, 왜 그런 결과가 나올까요?
+      //    깊이 고민해본 후, 주석처리된 부분을 해제하고 결과를 확인해보세요.
+      //
+      function setTimer(j) {
+        setTimeout(function timer() {
+          console.log(j);
+        }, j * 1000);
+      }
+
+      for (var i = 1; i < 6; i++) {
+        // setTimer(i);
+      }
+
+      /* 결과가 1~5가 출력되는 현상 이유 적어보기
+
+        quiz 1은 전역에서 이미 순회를 마친 i값을 참조한다. 
+        이것과 다르게 quiz 2는 
+        timer 함수 기준에서 setTimer함수가 외부함수의 Lexical environment를 참조해서
+        이 때 매개변수 식별자를 참고해 클로저를 발생시킨다.
+
+        1. setTimer 함수가 선언된 시점에 j라는 매개변수 식별자가 생김
+
+        2. for 문이 돌면서 setTimer의 매개변수에 전달인자로 i를 받을 때마다 
+          timer 함수의 console.log(j)가 i를 참조해서 클로저가 발생함
+      */
+    </script>
+  </body>
 </html>
